@@ -1,0 +1,2 @@
+Hi {{username}}.
+ProductByte is proud to introduce {{product}}.

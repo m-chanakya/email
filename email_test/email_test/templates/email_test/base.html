@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Homepage{% endblock %}</title>
+</head>
+
+<body>
+    <h1>HOME</h1>
+    <a href="/product/add/">Add a Product</a><br/>
+    <a href="/user/signup/">Signup</a><br/>
+    <a href="/subscribe/">Subscribe</a>
+    {% block main %}{% endblock %}
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+PRODUCTS:
+{% if product_list %}
+    {% for product in product_list %}
+        {{ product.name }}
+    {% endfor %}
+{% else %}
+    No polls are available.
+{% endif %}

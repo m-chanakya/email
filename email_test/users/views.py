@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from .forms import UserForm, SubscriberForm
 
+from users.tasks import send_activation_email
+
 @csrf_exempt
 def create(request):
     # if this is a POST request we need to process the form data
@@ -14,7 +16,8 @@ def create(request):
         if form.is_valid():
 		username, email, password = form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password1']
 		new_user = User.objects.create_user(username, email, password)
-		new_user.save()            
+		new_user.save()
+		send_activation_email(user_id = new_user.pk)
             	return HttpResponseRedirect('/')
 
     # if a GET (or any other method) we'll create a blank form

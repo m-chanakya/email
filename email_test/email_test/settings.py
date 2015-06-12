@@ -106,8 +106,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 from emails.email_config import *
-#EMAIL_USE_TLS = True
-#EMAIL_HOST = 'smtp.mailgun.org'
-#EMAIL_HOST_USER = 'postmaster@sandboxd3d568b7d6d14cd0a45db6ad1ea150b3.mailgun.org'
-#EMAIL_HOST_PASSWORD = '5df0f05bc3e660db56f74e12d3f3e644'
-#EMAIL_PORT = 587
+
+BROKER_URL = 'amqp://'
+CELERY_RESULT_BACKEND = 'amqp://'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT=['json']
+#CELERY_TIMEZONE = 'Europe/Oslo'
+CELERY_ENABLE_UTC = True
